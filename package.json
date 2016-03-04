@@ -9,7 +9,7 @@
     "url": "http://bitovi.com"
   },
   "license": "MIT",
-  "main": "default/index",
+  "main": "lib/",
   "scripts": {
     "test": "npm run jshint && npm run mocha",
     "jshint": "jshint test/. default/index.js --config",

@@ -38,7 +38,7 @@ module.exports = generator.Base.extend({
     var pkg = this.pkg;
     
     pkg.scripts = _.extend(pkg.scripts, {
-      test: 'npm run jshint && ' + pkg.scripts,
+      test: 'npm run jshint && ' + _.get(pkg, 'scripts.test', 'echo "No tests specified"'),
       jshint: 'jshint --config ' + _.get(pkg, 'system.directories.lib', 'src') + '/.'
     });
     
