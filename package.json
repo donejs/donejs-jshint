@@ -21,6 +21,7 @@
   },
   "keywords": [],
   "dependencies": {
+    "lodash": "^4.6.1",
     "yeoman-generator": "^0.22.5"
   },
   "devDependencies": {

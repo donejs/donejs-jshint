@@ -1,4 +1,5 @@
 var generator = require('yeoman-generator');
+var _ = require('lodash');
 
 module.exports = generator.Base.extend({
   initializing: function () {
@@ -12,7 +13,7 @@ module.exports = generator.Base.extend({
   
   prompting: function () {
     var done = this.async();
-
+   
     this.prompt([{
       type: 'list',
       name: 'indent_style',
@@ -34,6 +35,15 @@ module.exports = generator.Base.extend({
     }.bind(this));
   },
   writing: function () {
+    var pkg = this.pkg;
+    
+    pkg.scripts = _.extend(pkg.scripts, {
+      test: 'npm run jshint && ' + pkg.scripts,
+      jshint: 'jshint --config ' + _.get(pkg, 'system.directories.lib', 'src') + '/.'
+    });
+    
+    this.npmInstall([ 'jshint' ], { saveDev: true});
+    
     this.files.forEach(function(file) {
       this.log('Copying file to ' + this.destinationPath(file));
       
