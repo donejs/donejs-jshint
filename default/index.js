@@ -42,6 +42,7 @@ module.exports = generator.Base.extend({
       jshint: 'jshint --config ' + _.get(pkg, 'system.directories.lib', 'src') + '/.'
     });
     
+    this.fs.writeJSON('package.json', pkg);
     this.npmInstall([ 'jshint' ], { saveDev: true});
     
     this.files.forEach(function(file) {

@@ -20,4 +20,13 @@ describe('donejs-jshint', function() {
     assert.file(['.editorconfig']);
     assert.fileContent('.editorconfig', /indent_style = tab/);
   });
+  
+  it('update package.json', function() {
+    assert.jsonFileContent('package.json', {
+      scripts: {
+        jshint: 'jshint --config src/.'
+      }
+    });
+  });
+  
 });
